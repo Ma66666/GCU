@@ -1,0 +1,227 @@
+<!--pages/alltie/alltie.wxml-->
+<view class="indexContainer" >
+<view class="header">
+<image src="/images/alltie/发布.png" bindtap="gosend"></image>
+<view class="search" bindtap="gosearch">搜索</view>
+<image src="/images/index/搜索.png" bindtap="gosearch"></image>
+</view>
+</view>
+<view class="test1">
+
+<scroll-view scroll-x class="navScroll" enable-flex>
+<view class="navItem" wx:for="{{tieGroupList}}" wx:key="id" data-item="item" wx:for-index="idx">
+<view class="navContent {{navId ===idx?'active':''}}" bindtap="changeNav" id="{{idx}}">
+{{tieGroupList[idx]}}
+</view>
+</view>
+ </scroll-view>
+
+<view  wx:if="{{accountStatus==0}}"><!-- 普通用户 -->
+
+ <swiper class="topListSwiper" style="height:{{3000}}rpx" current="{{navId}}">
+ <swiper-item class="swiperItem">
+<view   wx:for="{{list}}" id="{{item}}">
+<view wx:if="{{item.sectorName=='恋爱区'}}" class="test1Item">
+<image src="/images/alltie/恋爱区.png"></image>
+<text decode="{{true}}" class="text1" bindtap="getTopicId" id="{{item.topicId}}" >
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+ {{item.title}}</text>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+
+</view>
+
+
+<view wx:if="{{item.sectorName=='编程区'}}"  class="test1Item" >
+<image src="/images/alltie/程序员.png"></image>
+<text decode="{{true}}" class="text1" bindtap="getTopicId" id="{{item.topicId}}">
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}}</text>
+
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+</view>
+ </swiper-item>
+
+
+ <swiper-item class="swiperItem">
+
+<view   wx:for="{{list}}" class="test1Item" bindtap="getTopicId"  wx:if="{{item.sectorName=='编程区'&& navId==1}}" >
+<image src="/images/alltie/程序员.png"></image>
+<text decode="{{true}}" class="text1"  >
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}}</text>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+ </swiper-item>
+
+
+ <swiper-item class="swiperItem">
+<view   wx:for="{{list}}" class="test1Item" bindtap="{{list1[idx]}}"  wx:if="{{item.sectorName=='恋爱区'&& navId==2}}" >
+<image src="/images/alltie/恋爱区.png"></image>
+<text decode="{{true}}" class="text1" >
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}}</text>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+ </swiper-item>
+ </swiper>
+
+</view><!-- 普通用户 -->
+
+
+</view>
+
+<view wx:if="{{accountStatus==2}}"><!-- 管理员 -->
+
+ <swiper class="topListSwiper" style="height:{{3000}}rpx" current="{{navId}}">
+ <swiper-item class="swiperItem">
+<view   wx:for="{{list}}" id="{{item}}"  >
+<view wx:if="{{item.sectorName=='恋爱区'}}" class="test1Item"   id="{{item.topicId}}" >
+<image src="/images/alltie/恋爱区.png"></image>
+<text decode="{{true}}" class="text1" bindtap="getTopicId" id="{{item.topicId}}">
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}} </text>
+
+<image src="/images/index/删除.png" class="image2" bindtap="shanchu" id="{{item.topicId}}"></image>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+
+</view>
+
+
+<view wx:if="{{item.sectorName=='编程区'}}"  class="test1Item" >
+<image src="/images/alltie/程序员.png"></image>
+<text decode="{{true}}" class="text1" id="{{item.topicId}}" bindtap="getTopicId" >
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}}</text>
+<image src="/images/index/删除.png" class="image2" id="{{item.topicId}}" bindtap="shanchu"></image>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+</view>
+ </swiper-item>
+
+
+ <swiper-item class="swiperItem">
+<view   wx:for="{{list}}" class="test1Item"   wx:if="{{item.sectorName=='编程区'&& navId==1}}" >
+<image src="/images/alltie/程序员.png"></image>
+<text decode="{{true}}" class="text1" class="text1" id="{{item.topicId}}" bindtap="getTopicId" >
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}}</text>
+<image src="/images/index/删除.png" class="image2" bindtap="shanchu" id="{{item.topicId}}"></image>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+
+</view>
+ </swiper-item>
+
+
+ <swiper-item class="swiperItem">
+<view   wx:for="{{list}}" class="test1Item" bindtap="{{list1[idx]}}"  wx:if="{{item.sectorName=='恋爱区'&& navId==2}}" >
+<image src="/images/alltie/恋爱区.png"></image>
+<text decode="{{true}}" class="text1" class="text1" id="{{item.topicId}}" bindtap="getTopicId">
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}}</text>
+<image src="/images/index/删除.png" class="image2" bindtap="shanchu" id="{{item.topicId}}"></image>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+ </swiper-item>
+ </swiper>
+</view><!-- 管理员 -->
+
+<!-- 版主删除帖子 -->
+<view wx:if="{{accountStatus==1}}" >
+<swiper class="topListSwiper" style="height:{{3000}}rpx" current="{{navId}}">
+ <swiper-item class="swiperItem">
+<view   wx:for="{{list}}" id="{{item}}">
+<view wx:if="{{item.sectorName=='恋爱区'}}" class="test1Item" >
+<image src="/images/alltie/恋爱区.png"></image>
+<text decode="{{true}}" class="text1" bindtap="getTopicId" id="{{item.topicId}}" >
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}}</text>
+<image src="/images/index/删除.png" class="image2" bindtap="shanchu" id="{{item.topicId}}" wx:if="{{sectorName=='恋爱区'}}"></image>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+
+
+<view wx:if="{{item.sectorName=='编程区'}}"  class="test1Item" id="{{item.topicId}}">
+<image src="/images/alltie/程序员.png"></image>
+<text decode="{{true}}" class="text1" bindtap="getTopicId" id="{{item.topicId}}">
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}}</text>
+<image src="/images/index/删除.png" class="image2" bindtap="shanchu" id="{{item.topicId}}" wx:if="{{sectorName=='编程区'}}"></image>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+</view>
+ </swiper-item>
+
+ <swiper-item class="swiperItem">
+<view   wx:for="{{list}}" class="test1Item"   wx:if="{{item.sectorName=='编程区'&& navId==1}}" wx:key="key1">
+<image src="/images/alltie/程序员.png"></image>
+<text decode="{{true}}" class="text1" class="text1" id="{{item.topicId}}" bindtap="getTopicId" >
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}}</text>
+<image src="/images/index/删除.png" class="image2" bindtap="shanchu" wx:for="{{list2}}" wx:key="idenx" wx:for-item="item2" id="{{item.topicId}}" wx:if="{{item2.sectorName=='编程区'}}"></image>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+
+</view>
+ </swiper-item>
+
+
+ <swiper-item class="swiperItem">
+<view   wx:for="{{list}}" class="test1Item"     wx:if="{{item.sectorName=='恋爱区'&& navId==2}}" >
+<image src="/images/alltie/恋爱区.png"></image>
+<text decode="{{true}}" class="text1" class="text1" id="{{item.topicId}}" bindtap="getTopicId">
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}
+
+{{item.title}}</text>
+<image src="/images/index/删除.png" class="image2" bindtap="shanchu" wx:for="{{list2}}"wx:key="idenx" wx:for-item="item2" id="{{item.topicId}}" wx:if="{{item2.sectorName=='恋爱区'}}"></image>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+ </swiper-item>
+ </swiper>
+</view>

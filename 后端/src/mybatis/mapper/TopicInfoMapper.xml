@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.TopicDao">
+	<!-- 1、查看自己发过的帖子 -->
+	<select id="selectPersonalTopic" parameterType="Integer"
+		resultType="pojo.TopicInfo">
+		select
+		title,Topictext,TopicDate,ReplyCount,wechat_topic.ClickingRate,SectorName,TopicId,TopicPicture
+		from wechat_topic,wechat_sector where
+		(wechat_topic.AccountId =
+		#{AccountId} and
+		wechat_sector.SectorId=wechat_topic.SectorId)
+	</select>
+
+	<!-- 2、查看所有的帖子 -->
+	<select id="selectAllTopic" resultType="pojo.TopicInfo">
+		select
+		title,Topictext,TopicDate,ReplyCount,wechat_topic.ClickingRate,SectorName,wechat_topic.SectorId,TopicId,AccountName,TopicPicture,wechat_account.AccountPicture
+		from wechat_topic,wechat_sector,wechat_account where
+		(wechat_sector.SectorId=wechat_topic.SectorId and
+		wechat_topic.AccountId=wechat_account.AccountId)
+	</select>
+	<!-- 3、发帖 -->
+	<insert id="addTopic" parameterType="pojo.TopicInfo">
+		insert into wechat_topic
+		(AccountId,Title,
+		TopicText, TopicDate,SectorId,TopicPicture)
+		values(#{AccountId},#{Title},#{TopicText},
+		#{TopicDate},#{SectorId},#{TopicPicture});
+	</insert>
+	<!-- 4、查看对应模板所有的帖子 -->
+	<select id="selectTopic" parameterType="Integer"
+		resultType="pojo.TopicInfo">
+		SELECT
+		AccountName,Title,TopicText,TopicDate,ReplyCount,ClickingRate
+		FROM
+		wechat_topic,wechat_account WHERE (Sectorid=#{SectorId} AND
+		wechat_topic.AccountId=wechat_account.AccountId);
+	</select>
+	<!-- 5、回帖时对应数量加一 -->
+	<update id="updateReplyNumber" parameterType="Integer">
+		UPDATE
+		wechat_topic
+		SET ReplyCount=ReplyCount+1 WHERE TopicId=#{TopicId};
+	</update>
+	<!-- 6、点击对应帖子时 点击数加一 -->
+	<update id="updateClickingRateNumber" parameterType="Integer">
+		UPDATE
+		wechat_topic
+		SET ClickingRate=ClickingRate+1 WHERE TopicId=#{TopicId};
+	</update>
+	<!-- 7、版主删除不合规的帖子 -->
+	<delete id="deleteTopic" parameterType="Integer">
+		delete from wechat_topic
+		where TopicId = #{TopicId}
+	</delete>
+	<update id="downTopic" parameterType="Integer">
+		update wechat_sector set
+		TopicCount=TopicCount-1 where SectorId in(select
+		SectorId from
+		wechat_topic where TopicId=#{TopicId} );
+	</update>
+	<!-- 8、超级管理员删除板块时删除相关联的帖子 因为外键不能自增所以只能写这个了 -->
+	<delete id="deleteAllTopic" parameterType="String">
+		DELETE FROM
+		wechat_topic WHERE SectorId IN(SELECT SectorId FROM wechat_sector
+		WHERE SectorName=#{SectorName});
+	</delete>
+	<!-- 9、返回帖子数 -->
+	<select id="topicNumber" resultType="Integer">
+		SELECT COUNT(topicId) FROM
+		wechat_topic;
+	</select>
+	<!-- 10、模糊查询 -->
+	<select id="checkTopic" parameterType="String"
+		resultType="pojo.TopicInfo">
+		SELECT
+		TopicId,wechat_account.AccountId,AccountName,Title,TopicText,TopicDate,ReplyCount,wechat_topic.ClickingRate,wechat_topic.SectorId,SectorName
+		FROM wechat_topic,wechat_account,wechat_sector WHERE
+		wechat_topic.AccountId=wechat_account.AccountId AND
+		wechat_topic.SectorId=wechat_sector.SectorId AND Title LIKE
+		CONCAT(CONCAT('%',#{topicName},'%'));
+
+	</select>
+</mapper>

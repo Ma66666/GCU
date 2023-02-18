@@ -1,0 +1,47 @@
+
+<!--pages/mytie/mytie.wxml-->
+<view class="test1">
+<text class="title">我的发帖</text>
+<swiper style="height:{{3000}}rpx">
+ <swiper-item class="swiperItem">
+ 
+ <view   wx:for="{{list2}}"  >
+ <view class="test1Item"  wx:if="{{item.sectorName=='编程区'}}">
+<image src="/images/alltie/程序员.png"></image>
+<text decode="{{true}}" class="text1">
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.title}}</text>
+<image src="/images/index/删除.png" class="image2" bindtap="shanchu" id="{{item.topicId}}"></image>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+
+ <view class="test1Item"  wx:elif="{{item.sectorName=='恋爱区'}}">
+<image src="/images/alltie/恋爱区.png"></image>
+<text decode="{{true}}" class="text1">
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.title}}</text>
+<image src="/images/index/删除.png" class="image2" bindtap="shanchu" id="{{item.topicId}}"></image>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+
+ </view>
+ </swiper-item>
+ </swiper>
+
+</view>
+<!-- <swiper-item class="swiperItem">
+<view   wx:for="{{list}}" class="test1Item" bindtap="{{list1[idx]}}"  wx:if="{{item.sectorName=='编程区'&& navId==2}}" >
+<image src="/images/alltie/程序员.png"></image>
+<text decode="{{true}}" class="text1">
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.title}}</text>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+ </swiper-item>
+ </swiper> -->

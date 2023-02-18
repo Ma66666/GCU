@@ -1,0 +1,139 @@
+/* pages/send/send.wxss */
+.header{
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 10rpx;
+  flex-direction: column;
+}
+.cancel{
+  width: 100rpx;
+
+}
+.sendInput{
+  
+  flex: 1;
+  background:  rgb(237, 237,237,0.2);
+  border-radius: 5rpx;
+  padding: 10rpx;
+  border: 2rpx  ridge  #eee
+}
+.Center .Centertext{
+  width: 100%;
+  background: rgb(237, 237,237,0.2);
+   border-radius: rpx;
+  padding: 10rpx;
+   border: 2rpx  ridge  #eee
+}
+.Center image{
+  height: 100rpx;
+  width: 100rpx;
+}
+
+
+/* 下拉 */
+.list-msg { 
+
+padding: 0 10rpx;
+
+background-color: #fff;
+
+position: relative;
+
+width: 90%;
+
+margin: 30rpx auto;
+
+}
+
+ 
+
+.list-msg .list-msg2 {
+
+height: 70rpx;
+
+display: flex;
+
+align-items: center;
+
+justify-content: space-around;
+
+border: 1px solid #f89219;
+
+padding: 0 20rpx;
+
+color: #f89219;
+
+border-radius: 10rpx;
+
+}
+
+ 
+
+.select_box {
+
+padding: 0;
+
+width: 97%;
+
+position: absolute;
+
+top: 90rpx;
+
+z-index: 1;
+
+overflow: hidden;
+
+animation: myfirst 0.5s;
+
+text-align: left;
+
+border: 1px solid #f89219;
+
+color: #f89219;
+
+border-radius: 10rpx;
+
+}
+
+ 
+
+@keyframes myfirst {
+
+from {
+
+height: 0rpx;
+
+}
+
+ 
+
+to {
+
+height: 300rpx;
+
+}
+
+}
+
+ 
+
+.select_one {
+
+height: 70rpx;
+
+line-height: 70rpx;
+
+border-bottom: 1px solid #f89219;
+
+background: #fff;
+
+}
+
+ 
+
+.select_one:last-child {
+
+border-bottom: none;
+
+}

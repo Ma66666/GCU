@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/tie/tie",
+    
+    
+    
+    "pages/alltie/alltie",
+    
+    "pages/register/register",
+    "pages/send/send",
+    "pages/personal/personal",
+    "pages/mytie/mytie",
+    "pages/search/search", 
+   
+    "pages/forget/forget",
+    "pages/bagui/bagui",
+    "pages/banzhu/banzhu",
+    "pages/bshuitie/bshuitie"
+  
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#00f0f1",
+    "navigationBarTitleText": "广城理贴吧",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#333",
+    "selectedColor": "#d43c33",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "/images/tabBar/首页.png",
+        "selectedIconPath": "/images/tabBar/首页-1.png"
+      },
+      {
+        "pagePath": "pages/alltie/alltie",
+        "text": "社区",
+        "iconPath": "/images/tabBar/订单.png",
+        "selectedIconPath": "/images/tabBar/订单-1.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text": "个人中心",
+        "iconPath": "/images/tabBar/个人.png",
+        "selectedIconPath": "/images/tabBar/个人-1.png"
+      }
+    ]
+  }
+}

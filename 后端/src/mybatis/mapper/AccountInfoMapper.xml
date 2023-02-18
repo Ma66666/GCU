@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.AccountDao">
+	<resultMap type="pojo.AccountInfo" id="id_account_info">
+		<id property="AccountId" column="AccountId" />
+	</resultMap>
+	<!-- 1、判断帐号和密码 -->
+	<select id="selectAccountByInfo"
+		parameterType="pojo.AccountInfo" resultType="pojo.AccountInfo">
+		select * from wechat_account
+		<where>
+			<if test="AccountId!=null and AccountId!=''">and AccountId=#{AccountId}
+			</if>
+			<if test="Password!=null and Password!=''"> and Password=#{Password}</if>
+		</where>
+	</select>
+	<!-- 2、注册帐号 -->
+	<insert id="addAccount" parameterType="pojo.AccountInfo">
+		insert into wechat_account
+		(AccountId,
+		Password, IphoneNumber,
+		AccountName,AccountStatus,AccountPicture)
+		values(#{AccountId},#{Password}, #{IphoneNumber},
+		#{AccountName},#{AccountStatus},#{AccountPicture})
+	</insert>
+	<!-- 3、找回密码与修改密码 -->
+	<update id="updateAccount" parameterType="pojo.AccountInfo">
+		update wechat_account
+		set Password
+		= #{Password} where (AccountId = #{AccountId} and
+		IphoneNumber = #{IphoneNumber})
+	</update>
+	<!-- 4、查看自己发过的帖子 -->
+	<select id="selectPersonalTopic" parameterType="Integer"
+		resultType="pojo.TopicInfo">
+		select * from wechat_topic,wechat_sector where
+		(wechat_topic.AccountId = #{AccountId} and
+		wechat_sector.SectorId=wechat_topic.SectorId)
+	</select>
+	<!-- 5、封号 -->
+	<update id="updateAccountStatus" parameterType="String">
+		update
+		wechat_account set AccountStatus=-1 where AccountId=#{AccountId};
+	</update>
+	<!-- 6、解封 -->
+	<update id="updateStatus" parameterType="String">
+		update wechat_account
+		set AccountStatus=0 where AccountId=#{AccountId};
+	</update>
+	<!-- 7、查看所有用户 -->
+	<select id="accountList" resultType="pojo.AccountInfo">
+		SELECT
+		AccountId,AccountName,IphoneNumber,StatusName,AccountStatus
+		FROM
+		wechat_account,wechat_status
+		WHERE
+		((AccountStatus=1 OR
+		AccountStatus=0
+		OR AccountStatus=-1) AND
+		wechat_account.AccountStatus=wechat_status.AccouontStatus);
+	</select>
+	<!-- 8、提升权限 -->
+	<update id="upStatus" parameterType="pojo.SectorInfo">
+		update wechat_account
+		set
+		AccountStatus=1 where AccountId=#{AccountId};
+	</update>
+
+	<!-- 9、取消权限 -->
+	<update id="downStatus" parameterType="String">
+		update wechat_account
+		set
+		AccountStatus=0 where AccountId=#{AccountId};
+	</update>
+</mapper>

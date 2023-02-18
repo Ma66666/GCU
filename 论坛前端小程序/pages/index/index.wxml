@@ -1,0 +1,90 @@
+<!--pages/index/index.wxml-->
+<view class="indexContainer">
+<view class="header">
+
+</view>
+<!-- 轮播图区域 -->
+<view wx:if="{{accountStatus==0||user=='游客'||accountStatus==1}}">
+<view class="zhangui">本站规定！！！</view>
+<swiper class="Swiper1" indicator-dots="true" indicator-color="ivory" indicator-active-color="#d43c33" indicator-color="blue">
+<swiper-item>
+<image src="/images/index/轮播图/吧规.png" bindtap="gobagui" ></image>
+</swiper-item>
+<swiper-item>
+<image src="/images/index/轮播图/水贴.png" bindtap="goshuitie"></image>
+</swiper-item>
+<swiper-item>
+<image src="/images/index/轮播图/版主.png" bindtap="gobanzhu"></image>
+</swiper-item>
+</swiper>
+
+<!-- 推荐店家 -->
+<view class="test1">
+<text class="title">本站规定</text>
+
+<scroll-view scroll-y>
+<view class="test1Item" bindtap="{{list1[idx]}}" wx:for="{{list}}" data-item="item"  wx:for-index="idx">
+<image src="{{list[idx]}}"></image>
+</view>
+</scroll-view>
+</view>
+</view><!-- 普通用户界面 -->
+
+
+
+<!-- 管理员 -->
+<view wx:if="{{accountStatus == 2}}">
+<text decode="{{true}}">&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;账号  &nbsp; &nbsp; &nbsp; &nbsp;   用户名  &nbsp; &nbsp;&nbsp; &nbsp; 账号状态  &nbsp; &nbsp;&nbsp; &nbsp;  状态 </text>
+<!-- 新管理员 -->
+<radio-group bindchange="checkboxChange">
+<text>\n</text>
+<view class="xgheader" wx:for="{{list2}}"  wx:if="{{item.accountId!=1}}">
+<checkbox value="{{item.accountId}}" checked="{{}}"/>
+<text decode="{{true}}">&nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;{{item.accountId}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{item.accountName}} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{item.accountStatus}}&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{{item.statusName}}
+
+</text>
+</view>
+</radio-group>
+
+<!-- 下拉框 -->
+<view class="list-msg">
+<view class="list-msg2" bindtap="getselect" bindinput="handleInput" >
+<text>{{tihuoWay}}</text>
+
+</view>
+<!-- 下拉列表显示 -->
+<view class="select_box" wx:if="{{select}}">
+<scroll-view scroll-y="true" style="height:300rpx">
+<view class="select_one" bindtap="mySelect" data-name="封号">封号</view>
+<view class="select_one" bindtap="mySelect" data-name="解封">解封</view>
+<view class="select_one" bindtap="mySelect" data-name="恋爱区">设置为恋爱去版主</view>
+<view class="select_one" bindtap="mySelect" data-name="编程区">设置为编程区版主</view>
+<view class="select_one" bindtap="mySelect" data-name="解除">解除版主</view>
+</scroll-view>
+</view>
+<text>\n</text>
+
+<button bindtap="queren">确认</button>
+
+</view>
+
+<view class="add">
+<text>\n</text>
+<text>\n</text>
+<text>\n</text>
+<text>\n</text>
+<text>添加板块</text>
+<input class="sendInput1"type="text" placeholder="请输入需要新建板块的名字"  bindinput="handleInput5" id="Input1"></input>
+<button class="confirm-btn" bindtap="queren1">确认</button>
+</view>
+<view class="sc">
+<text>\n</text>
+<text>删除板块</text>
+<input class="sendInput1"type="text" placeholder="请输入需要新建板块的名字"  bindinput="handleInput5" id="Input1"></input>
+<button class="confirm-btn" bindtap="queren2">确认</button>
+</view>
+
+
+</view><!-- 管理员 -->
+
+</view>

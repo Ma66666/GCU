@@ -1,0 +1,43 @@
+<!--pages/register/register.wxml-->
+<view class="container">
+  <view class="wrapper">
+    <view class="left-top-sign">REGISTER</view>
+      <view class="welcome">
+      欢迎注册！
+    </view>
+    <view class="input-content">
+      <view class="input-item">
+        <text class="tit">账号</text>
+        <input  type="text" placeholder="请输入账号" data-test="abc" data-type="accountId" id="accountId" bindinput="handleInput"/>
+      </view>
+      <view class="input-item">
+        <text class="tit">密码</text>
+        <input type="password"  placeholder="请输入密码" data-test="abc" data-type="password" id="password" bindinput="handleInput"/>
+      </view>
+            <view class="input-item">
+        <text class="tit">电话号码</text>
+        <input type="text"  placeholder="请输入电话号码" data-test="abc" data-type="iphoneNumbmer" id="iphoneNumber" bindinput="handleInput"/>
+      </view>
+                  <view class="input-item">
+        <text class="tit">用户名</text>
+        <input type="text"  placeholder="请输入用户名" data-test="abc" data-type="accountName" id="accountName" bindinput="handleInput"/>
+      </view>
+      <view wx:for="{{pics}}" >
+      <text bindtap="uploader1">点击清除图片</text>
+<image src="{{item}}"></image>
+  </view>
+<view class="image1" wx:for="{{pics}}">
+</view>
+<view class="image1">
+<text>
+点击添加头像:</text>
+ <image src="{{value==1?'/images/send/添加.png':''}}" bindtap='uploader'  ></image>
+
+</view>
+
+    </view>
+   
+    <button class="confirm-btn" bindtap="register">注册</button>
+  </view>
+
+</view>

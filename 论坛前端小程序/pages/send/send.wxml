@@ -1,0 +1,49 @@
+<!--pages/send/send.wxml-->
+<view class="sendContainer">
+<text>\n</text>
+<text>\n</text>
+<view class="header">
+
+
+
+
+<view class="sendInput"> 
+
+<form>
+<input class="sendInput1"type="text" placeholder="请输入标题(4-40g个字)"  bindinput="handleInput" id="Input1"></input>
+</form>
+</view>
+
+</view>
+<view class="Center">
+<textarea placeholder="请输入内容" class="Centertext" bindinput="handleInput" id="Text1"></textarea>
+
+
+<view wx:for="{{pics}}">
+<image src="{{item}}"></image>
+  </view>
+
+<image src="/images/send/添加.png" bindtap='uploader'></image>
+</view>
+
+<!-- 下拉框 -->
+<view class="list-msg">
+<view class="list-msg2" bindtap="getselect" bindinput="handleInput" >
+<text>{{tihuoWay}}</text>
+
+</view>
+<!-- 下拉列表显示 -->
+<view class="select_box" wx:if="{{select}}">
+<scroll-view scroll-y="true" style="height:300rpx" >
+<view class="select_one" wx:for="{{tieGroupList}}" wx:for-index="idx" bindtap="mySelect" data-name="{{tieGroupList[idx]}}">{{tieGroupList[idx]}}</view>
+
+
+</scroll-view>
+</view>
+<text>\n</text>
+</view>
+<text></text>
+<button class="confirm-btn" bindtap="send">发送</button>
+
+
+</view>

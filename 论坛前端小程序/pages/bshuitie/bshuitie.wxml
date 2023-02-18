@@ -1,0 +1,18 @@
+<!--pages/bshuitie/bshuitie.wxml-->
+<view class="shuitie">
+<text>\n</text>
+<text>\n</text>
+<text>\n</text>
+<text>水贴规则！</text>
+<text>\n</text>
+<text>\n</text>
+</view>
+<view>
+<text>1.本吧不拒绝水贴，只是不要洪水泛滥。</text>
+<text>\n</text>
+<text>\n</text>
+<text>2.恶意水：挑衅、欺骗、漫骂、找抽、脑残、犯贱…（以上水贴，发现后立即删除）</text>
+<text>\n</text>
+<text>\n</text>
+
+</view>

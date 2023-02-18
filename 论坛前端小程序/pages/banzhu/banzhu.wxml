@@ -1,0 +1,22 @@
+<!--pages/banzhu/banzhu.wxml-->
+<view class="banzhu">
+<text>\n</text>
+<text>\n</text>
+<text>\n</text>
+<text>版主规则！</text>
+<text>\n</text>
+<text>\n</text>
+</view>
+<view>
+<text>1.版主由管理挑选</text>
+<text>\n</text>
+<text>\n</text>
+<text>2.版主有权对所属板块进行管理</text>
+<text>\n</text>
+<text>\n</text>
+<text>3.版主应以身作则，严格遵守论坛的各项规定</text>
+<text>\n</text>
+<text>\n</text>
+
+</view>
+

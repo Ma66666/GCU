@@ -1,0 +1,5 @@
+/* pages/bshuitie/bshuitie.wxss */
+.shuitie{
+  text-align: center;
+  font-size: 36rpx;
+}

@@ -1,0 +1,6 @@
+/* pages/bagui/bagui.wxss */
+.bagui{
+ 
+  font-size: 40rpx;
+  text-align: center
+}

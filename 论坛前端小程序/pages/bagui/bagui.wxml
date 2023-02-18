@@ -1,0 +1,30 @@
+<!--pages/bagui/bagui.wxml-->
+
+<view class="bagui">
+<text>\n</text>
+<text>\n</text>
+<text>\n</text>
+<text>本吧吧规！</text>
+<text>\n</text>
+<text>\n</text>
+</view>
+<view class="bagui1">
+<text>1.禁止辱骂《XXX》中任何角色，也不要带有明显的贬低性。</text>
+<text>\n</text>
+<text>\n</text>
+<text>2.禁止辱骂、欺骗、讽刺、恶意贬低本吧任何成员。</text>
+<text>\n</text>
+<text>\n</text>
+<text>3.不得使用带有污秽及讽刺意味的用户名。</text>
+<text>\n</text>
+<text>\n</text>
+<text>4.禁止以本吧名义在外惹是生非。</text>
+<text>\n</text>
+<text>\n</text>
+<text>5.禁止H及BL图文。</text>
+<text>\n</text>
+<text>\n</text>
+<text>6.请勿裸奔，先注册登录后在发帖、跟帖。回贴请在15字以上。</text>
+<text>\n</text>
+<text>\n</text>
+</view>

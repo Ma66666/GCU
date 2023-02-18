@@ -1,0 +1,25 @@
+<!--pages/search/search.wxml-->
+<view class="searchContainer">
+  <!-- 头部搜索区域 -->
+  <view class="header">
+    <view class="searchInput">
+      <text class="iconfont icon-search1 searchIcon"></text>
+      <input type="text"  placeholder="搜索帖子" placeholder-class="placeholder" bindinput="handleInput" id="searchId"/>
+    </view>
+    <text class="cancel" bindtap="search">搜索</text>
+  </view>
+
+<view class="center">
+<view   wx:for="{{list2}}" bindtap="gotie" id="{{item.topicId}}" >
+<view  class="test1Item" >
+<text decode="{{true}}" class="text1" >
+{{item.sectorName}}&nbsp;&nbsp;&nbsp;&nbsp;{{item.title}}</text>
+<image src="/images/alltie/评论.png" class="image2"></image>
+<text class="text2">{{item.replyCount}}</text>
+<image src="/images/alltie/点击.png" class="image2"></image>
+<text class="text2">{{item.clickingRate}}</text>
+</view>
+</view>
+
+</view>
+</view>

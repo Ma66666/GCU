@@ -1,0 +1,25 @@
+<!--pages/register/register.wxml-->
+<view class="container">
+  <view class="wrapper">
+    <view class="left-top-sign">REMAKE</view>
+      <view class="welcome">
+      修改密码
+    </view>
+    <view class="input-content">
+      <view class="input-item">
+        <text class="tit">账号</text>
+        <input  type="text" placeholder="请输入账号" data-test="abc" data-type="accountId" id="accountId" bindinput="handleInput"/>
+      </view>
+                  <view class="input-item">
+        <text class="tit">电话号码</text>
+        <input type="text"  placeholder="请输入与改账号绑定的电话号码" data-test="abc" data-type="iphoneNumbmer" id="iphoneNumber" bindinput="handleInput"/>
+      </view>
+      <view class="input-item">
+        <text class="tit">密码</text>
+        <input type="text"  placeholder="请输入新密码" data-test="abc" data-type="password" id="password" bindinput="handleInput"/>
+      </view>                
+    </view>
+    <button class="confirm-btn" bindtap="forget">确认</button>
+  </view>
+
+</view>

@@ -1,0 +1,5 @@
+/* pages/banzhu/banzhu.wxss */
+.banzhu{
+  text-align: center;
+  font-size: 36rpx;
+}

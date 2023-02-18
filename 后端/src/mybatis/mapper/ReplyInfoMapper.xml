@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.ReplyDao">
+	<!-- 1、回复帖子 -->
+	<insert id="addReply" parameterType="pojo.TopicInfo">
+		insert into wechat_reply
+		(TopicId,AccountId,
+		ReplyText, ReplyDate,ReplyPicture)
+		values(#{TopicId},#{AccountId},#{ReplyText},
+		#{ReplyDate},#{ReplyPicture})
+	</insert>
+
+	<!-- 2、查看回复内容 -->
+	<select id="selectAllReply" parameterType="Integer"
+		resultType="pojo.ReplyInfo">
+		SELECT
+		wechat_reply.AccountId,AccountName,ReplyText,ReplyDate,ClickingRate,ReplyId,AccountPicture,ReplyPicture
+		FROM
+		wechat_reply,wechat_account WHERE (TopicId=#{TopicId} AND
+		wechat_account.AccountId=wechat_reply.AccountId);
+	</select>
+	<!-- 3、删除帖子的同时删除回复内容 -->
+	<delete id="deleteAllReply" parameterType="Integer">
+		delete from
+		wechat_reply where TopicId=#{TopicId};
+	</delete>
+	<!-- 4、删除模板时同时删除回复内容 -->
+	<delete id="deleteSectorReply" parameterType="String">
+		DELETE FROM
+		wechat_reply WHERE TopicId IN (SELECT TopicId FROM wechat_topic
+		WHERE
+		SectorId IN(SELECT SectorId FROM wechat_sector WHERE
+		SectorName=#{SectorName}));
+	</delete>
+	<!-- 5、删除回复 -->
+	<delete id="deleteReply" parameterType="Integer">
+		delete from wechat_reply
+		where ReplyId=#{ReplyId};
+	</delete>
+	<!-- 6、点赞 -->
+	<update id="upClicking" parameterType="Integer">
+		update wechat_reply set
+		ClickingRate=ClickingRate+1 where
+		ReplyId=#{ReplyId};
+	</update>
+</mapper>

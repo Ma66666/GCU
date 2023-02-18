@@ -1,0 +1,128 @@
+/* pages/tie/tie.wxss */
+.all{
+  display: flex;
+  flex-direction: column;
+
+}
+.header{
+  height: 500rpx;
+  border: 5rpx ridge  rgb(237, 237,237,0.2);
+}
+.header2{
+display: flex;
+flex-direction: column;
+
+}
+
+.header3{
+display: flex;
+flex-direction: row;
+}
+.header4{
+display: flex;
+flex-direction: column;
+}
+.header5{
+  display: flex;
+flex-direction: row;
+}
+.header5 .text11{
+  margin: 20rpx 0 0 0 
+}
+.header4 .time{
+  font-size: 24rpx;
+}
+.cheader{
+
+  border: 5rpx ridge  rgb(237, 237,237,0.2);
+}
+.header .title{
+  text-align: center;
+  font-size: 25rpx;
+}
+.header image{
+height: 100rpx;
+width: 100rpx;
+border-radius: 50%;
+
+}
+.tupian image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 0%;
+}
+
+.header1{
+ display: flex;
+  flex-direction: row;
+}
+.header2{
+ display: flex;
+  flex-direction: column;
+}
+.header4 image{
+  height: 150rpx;
+width: 150rpx;
+border-radius: 0%;
+}
+.title {
+  text-align: center;
+}
+.header1 .time{
+
+  font-size: 25rpx;
+}
+
+.header2 .tupian2{
+   height: 150rpx;
+width: 150rpx;
+border-radius: 0%;
+}
+
+
+
+.line{
+margin: 0 auto;
+
+width:80%;
+
+height:2rpx;
+
+background:#aaa;
+}
+.shuaxin{
+  text-align: center
+}
+
+.dibu{
+  display:flex;
+  flex-direction: row;
+    height: 80rpx;
+  line-height: 56rpx;
+  font-size: 30rpx;
+  color: #606266;
+ 
+  border: 5rpx ridge  rgb(237, 237,237,0.2);
+  
+}
+.dibu .inputh{
+  width: 60%;
+}
+.dibu image{
+  height: 80rpx;
+  width: 80rpx;
+}
+.dibu .text{
+  margin: 15rpx 0 0 0
+}
+.center image{
+ height: 75rpx;
+ width: 75rpx;
+ border-radius: 50%;
+}
+.viewScroll{
+
+  /* //动态计算Css的宽高 */
+  height:calc(100vh - 100rpx); 
+}
+

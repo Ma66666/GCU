@@ -1,0 +1,72 @@
+<!--pages/tie/tie.wxml-->
+<view class="all">
+ <scroll-view scroll-y class="viewScroll">
+<view class="title" wx:for="{{list2}}" wx:if="{{item.topicId==topicId}}">
+<text class="title1">{{item.title}}</text>
+</view>
+<text>\n</text>
+<view class="header">
+<view class="header1"wx:for="{{list2}}" wx:if="{{item.topicId==topicId}}">
+<image src="{{item.accountPicture}}"></image>
+<view class="header2">
+<text class="name" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}</text>
+<text class="time" decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;{{item.topicDate}}</text>
+</view>
+</view> <!-- header1 -->
+<text>\n</text>
+<view wx:for="{{list2}}" wx:if="{{item.topicId==topicId}}" class="tupian">
+<text class="neiron"decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;{{item.topicText}}
+</text>
+<image src="{{item.topicPicture}}" class="Image2"></image>
+</view>
+</view><!-- header -->
+
+<text>\n</text>
+<text>回复</text>
+<view class="center">
+<view class="cheader">
+<view class="header2" wx:for="{{list}}">
+
+<view class="header3">
+<image src="{{item.accountPicture}}"></image>
+<view class="header4">
+<text class="name"decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;{{item.accountName}}</text>
+<text class="time"decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;{{item.replyDate}}</text>
+</view>
+</view>
+<text>\n</text>
+
+<text class="neiron">{{item.replyText}}</text>
+<text>\n</text>
+<image src="{{item.replyPicture}}" class="tupian2"></image>
+<view class="header5">
+<image src="/images/tie/点赞-1.png" catchtap="qiehuan" id="{{item.replyId}}"></image>
+<text class="text11"> (亮了:{{item.clickingRate}})</text>
+<text decode="{{true}}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<image src="/images/index/删除.png" wx:if="{{accountId==1}}" bindtap="shanchu" id="{{item.replyId}}"></image>
+ 
+ </view>
+
+<view class="line">
+
+</view>
+<text>\n</text>
+</view> <!-- header1 -->
+
+</view><!-- header -->
+
+</view>
+<!-- center -->
+ </scroll-view>
+
+<view class="dibu">
+ <input  type="text" placeholder="请输入友善的回复吧" data-test="abc"bindinput="handleInput" id="text" class="inputh" ></input>
+ <view wx:for="{{pics}}">
+<image src="{{item}}"></image>
+  </view>
+ <image src="/images/send/添加.png" bindtap="uploader"></image>
+
+ <text decode="true" bindtap="sendreply" class="text">&nbsp;&nbsp;&nbsp;&nbsp;发送</text>
+</view>
+
+</view><!-- all -->

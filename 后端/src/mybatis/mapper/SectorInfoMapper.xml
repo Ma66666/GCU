@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.SectorDao">
+	<!-- 1、版主查看自己管理的板块 -->
+	<select id="checkSector" parameterType="Integer"
+		resultType="pojo.SectorInfo">
+		SELECT * FROM
+		wechat_sector WHERE AccountId=#{AccountId};
+	</select>
+	<!-- 2、发帖时对应数量加一 -->
+	<update id="updateTopicNumber" parameterType="Integer">
+		UPDATE
+		wechat_sector SET TopicCount=TopicCount+1 WHERE SectorId=#{SectorId};
+	</update>
+	<!-- 3、用户查看有哪些板块 -->
+	<select id="checkAllSector" resultType="pojo.SectorInfo">
+		SELECT
+		SectorId,wechat_sector.AccountId,SectorName,ClickingRate,TopicCount,AccountName
+		FROM wechat_account,wechat_sector WHERE
+		wechat_account.AccountId=wechat_sector.AccountId;
+	</select>
+	<!-- 4、进入模板时对应的点击数量加一 -->
+	<update id="updateClickingRateNumber" parameterType="Integer">
+		UPDATE
+		wechat_sector SET ClickingRate=ClickingRate+1 WHERE
+		SectorId=#{SectorId};
+	</update>
+	<!-- 5、超级管理员删除不合规的板块 -->
+	<delete id="deleteSector" parameterType="String">
+		delete from
+		wechat_sector
+		where SectorName = #{SectorName};
+	</delete>
+	<!-- 6、添加模块(版主) -->
+	<insert id="addSector" parameterType="pojo.SectorInfo">
+		insert into wechat_sector
+		(AccountId,SectorName)
+		values(#{AccountId},#{SectorName}) ;
+	</insert>
+	<!-- 7、取消权限模块 -->
+	<update id="downSector" parameterType="String">
+		UPDATE wechat_sector SET
+		AccountId=1 WHERE AccountId=#{AccountId};
+	</update>
+	<!-- 8、获得板块名 -->
+	<select id="checkName" resultType="String">
+		select SectorName from
+		wechat_sector;
+	</select>
+	<!-- 9、创建板块 -->
+	<insert id="establishSector" parameterType="String">
+		insert into
+		wechat_sector (AccountId,SectorName) values (1,#{SectorName});
+	</insert>
+</mapper>

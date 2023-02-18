@@ -1,0 +1,58 @@
+.searchContainer {
+  padding: 0 20rpx;
+}
+.header {
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 10rpx 0;
+}
+
+.searchInput {
+  position: relative;
+  flex: 1;
+  background: rgba(237, 237, 237, 0.3);
+  border-radius: 30rpx;
+}
+
+
+.cancel {
+  width: 100rpx;
+  text-align: center;
+}
+.testItem{
+  
+  height: 250rpx;
+ border : 2rpx  ridge  #eee;
+}
+ .test1Item{
+height: 320rpx;
+ border : 2rpx  ridge  #eee;
+   display: flex;
+   flex-direction: row;
+}
+.test1Item .text1{
+ width: 400rpx;
+ 
+  white-space: nowrap;
+  overflow: hidden;
+ text-overflow: ellipsis;
+}
+
+.test1Item image{
+  margin: 40rpx 0 40rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+.test1Item .image2{
+  height: 50rpx;
+  width: 50rpx;
+  margin: 250rpx 0 20rpx 20rpx;
+}
+.test1Item .text2{
+   margin: 250rpx 0 20rpx 0 ;
+}
+
+
+
+
